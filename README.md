@@ -2,9 +2,9 @@ This is a [Next.js](https://nextjs.org) + [wagmi](https://wagmi.sh) + [@wagmi/cl
 
 # Getting Started
 
-Run `npm run dev` in your terminal, and then open [localhost:3000](http://localhost:3000) in your browser.
+Run `yarn` in your terminal, then `yarn dev` , and then open [localhost:3000](http://localhost:3000) in your browser.
 
-This command will also generate React Hooks from the Wagmi Mint Example ABI (e.g. `useWagmiMintExampleTotalSupply`, `useWagmiMintExampleBalanceOf`, etc) for you to use in your project.
+This command will also generate React Hooks from the Wagmi Mint Example ABI (e.g. `useWagmiMintExampleSafeMint`, `useWagmiMintExampleBalanceOf`, etc) for you to use in your project.
 
 Once the webpage has loaded, changes made to files inside the `src/` directory (e.g. `src/pages/index.tsx`) will automatically update the webpage.
 
