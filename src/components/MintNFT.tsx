@@ -4,8 +4,8 @@ import { useState } from 'react'
 import { useWaitForTransaction } from 'wagmi'
 
 import {
-  usePrepareWagmiMintExampleMint,
-  useWagmiMintExampleMint,
+  usePrepareWagmiMintExampleSafeMint,
+  useWagmiMintExampleSafeMint,
 } from '../generated'
 
 export function MintNFT() {
@@ -15,10 +15,10 @@ export function MintNFT() {
     config,
     error: prepareError,
     isError: isPrepareError,
-  } = usePrepareWagmiMintExampleMint({
-    args: tokenId ? [BigInt(tokenId)] : undefined,
-  })
-  const { data, error, isError, write } = useWagmiMintExampleMint(config)
+  } = usePrepareWagmiMintExampleSafeMint({
+    args: []
+  } as any);
+  const { data, error, isError, write } = useWagmiMintExampleSafeMint(config);
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,

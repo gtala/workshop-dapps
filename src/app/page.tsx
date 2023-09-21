@@ -4,7 +4,7 @@ import { Connected } from '../components/Connected'
 import { MintNFT } from '../components/MintNFT'
 import { NetworkSwitcher } from '../components/NetworkSwitcher'
 
-export function Page() {
+const Page = ()=> {
   return (
     <>
       <h1>wagmi + Next.js + @wagmi/cli (ABI)</h1>
