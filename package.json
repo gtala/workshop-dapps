@@ -10,6 +10,7 @@
     "wagmi": "wagmi generate"
   },
   "dependencies": {
+    "@suiet/wallet-kit": "^0.2.19",
     "@wagmi/cli": "^1.0.0",
     "next": "^13.4.0",
     "react": "^18.2.0",
