@@ -15,19 +15,6 @@ export function NetworkSwitcher() {
         {chain?.unsupported && ' (unsupported)'}
       </div>
 
-      {switchNetwork && (
-        <div>
-          {chains.map((x) =>
-            x.id === chain?.id ? null : (
-              <button key={x.id} onClick={() => switchNetwork(x.id)}>
-                {x.name}
-                {isLoading && x.id === pendingChainId && ' (switching)'}
-              </button>
-            ),
-          )}
-        </div>
-      )}
-
       {error && <div>{(error as BaseError).message}</div>}
     </>
   )

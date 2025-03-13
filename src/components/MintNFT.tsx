@@ -4,21 +4,26 @@ import { useState } from 'react'
 import { useWaitForTransaction } from 'wagmi'
 
 import {
-  usePrepareWagmiMintExampleSafeMint,
-  useWagmiMintExampleSafeMint,
+  useMarketPlaceCreateOffer, usePrepareMarketPlaceCreateOffer,
 } from '../generated'
 
-export function MintNFT() {
-  const [tokenId, setTokenId] = useState('')
+import { parseEther } from 'viem'
 
-  const {
+
+export function MintNFT() {
+  const [tokenAddress, setTokenAddress] = useState('0x857832959943c07F1aee994d9ee9DB14E539b5D2')
+    const [quantity, setQuantity] = useState(parseEther('0.01'))
+  const [cost, setCost] = useState(parseEther('0.01'))
+
+
+    const {
     config,
     error: prepareError,
     isError: isPrepareError,
-  } = usePrepareWagmiMintExampleSafeMint({
-    args: []
+  } = usePrepareMarketPlaceCreateOffer({
+    args: [tokenAddress, quantity, cost]
   } as any);
-  const { data, error, isError, write } = useWagmiMintExampleSafeMint(config);
+  const { data, error, isError, write } = useMarketPlaceCreateOffer(config);
 
   const { isLoading, isSuccess } = useWaitForTransaction({
     hash: data?.hash,
@@ -27,13 +32,16 @@ export function MintNFT() {
   return (
     <div>
       <input
-        onChange={(e) => setTokenId(e.target.value)}
-        placeholder="Token ID (optional)"
-        value={tokenId}
+        onChange={(e) => setTokenAddress(e.target.value)}
+        placeholder="Token Address"
+        value={tokenAddress}
       />
       <button disabled={!write || isLoading} onClick={() => write?.()}>
         {isLoading ? 'Minting...' : 'Mint'}
       </button>
+
+
+
       {isSuccess && (
         <div>
           Successfully minted your NFT!
@@ -42,6 +50,7 @@ export function MintNFT() {
           </div>
         </div>
       )}
+
       {(isPrepareError || isError) && (
         <div>Error: {(prepareError || error)?.message}</div>
       )}
